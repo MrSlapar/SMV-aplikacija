@@ -1,15 +1,9 @@
-img {
-	width: 100%;
-	opacity: 30%;
-	margin-top: 3%;
-	z-index: -1;
+#topImage {
+	margin-top: 7%;
 }
-span {
+.main {
+	margin-top: 1%;
+	margin-bottom: 1%;
 	font-family: roboto;
-}
-#title {
-	font-size: 50;
-}
-#subtitle {
-	font-size: 10;
+	font-size: 40;
 }
