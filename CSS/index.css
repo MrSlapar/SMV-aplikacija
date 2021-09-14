@@ -1,0 +1,15 @@
+img {
+	width: 100%;
+	opacity: 30%;
+	margin-top: 3%;
+	z-index: -1;
+}
+span {
+	font-family: roboto;
+}
+#title {
+	font-size: 50;
+}
+#subtitle {
+	font-size: 10;
+}

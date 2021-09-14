@@ -1,0 +1,51 @@
+.notifications {
+	padding: 15px;	
+	display: flex;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	height: 100%;
+	width: 20%;
+	float: left;
+	background: linear-gradient(90deg, rgba(16,184,80,1) 18%, rgba(0,195,164,1) 100%);
+	flex-direction: column;
+}
+.notifications>div {
+	text-align: center;
+	margin: 3%;
+	width: 94%;
+	background: #ffffff;
+	border: 30px;
+}
+.notifications>div>span {
+	font-family: aquawax;
+	font-size: 15;
+	color: dimgray;
+	transition: 0.25s;
+}
+.notifications>div>span:hover {
+	color: #00997a;
+	cursor: pointer;
+}
+#notificationTitle {
+	font-family: roboto;
+	font-size: 20;
+	color: #ffffff;
+	text-align: center;
+	transition: 0.5s; 
+	opacity: 75%;
+}
+#notificationTitle:hover {
+	cursor: pointer;
+	opacity: 100%;
+}
+
+.main {
+	padding: 15px;
+	height: 100%;
+	width: 75%;
+	float: right;
+	background-image: url("../images/scc/background.jpg");
+	opacity: 30%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
