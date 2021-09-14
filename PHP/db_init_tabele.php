@@ -20,17 +20,15 @@ $conn->query("
 		id int PRIMARY KEY AUTO_INCREMENT,
 		ime varchar(30) NOT NULL,
 		priimek varchar(30) NOT NULL,
-		starost int NOT NULL,
 		password varchar(255) NOT NULL
 	)
 ");
 
 $conn->query("
-	CREATE TABLE Dijak(
+	CREATE TABLE Dijaki(
 		id int PRIMARY KEY AUTO_INCREMENT,
 		ime varchar(30) NOT NULL,
 		priimek varchar(30) NOT NULL,
-		starost int NOT NULL,
 		password varchar(255) NOT NULL
 	)
 ");
