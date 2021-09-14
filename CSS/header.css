@@ -19,9 +19,9 @@
 body {
 	margin: 0;
 	font-family: philosopher;
+	background-image: url("../images/scc/background1.png");
+	background-size: cover;
 }
-
-
 
 .header {
 	width: 100%;
