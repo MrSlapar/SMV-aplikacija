@@ -14,3 +14,4 @@ $result = $conn->query("
 		"'" . password_hash($_POST["password"], PASSWORD_DEFAULT) . "'
 	);"
 );
+?>
