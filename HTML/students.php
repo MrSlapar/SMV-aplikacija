@@ -4,6 +4,14 @@
 		</title>
 		<link rel="stylesheet" href="../CSS/header.css">
 		<link rel="stylesheet" href="../CSS/students.css">
+		<?php
+			$servername = "localhost";
+			$username = "root";
+			$password = "";
+
+			$conn = mysqli_connect($servername, $username, $password);
+			$conn->query("USE Eucilnica");
+		?>
 	</head>
 	<body>
 		<div class = "header">
@@ -46,118 +54,18 @@
 		<div class = "main">
 			<div class = "submain">
 				<table>
-					<tr>
-						<td class = "leftColumn">
-							SOMETHING
-						</td>
-						<td class = "rightColumn">
-							SOMETHING
-						</td>
-					</tr>
-					<tr>
-						<td class = "leftColumn">
-							SOMETHING
-						</td>
-						<td class = "rightColumn">
-							SOMETHING
-						</td>
-					</tr>
-					<tr>
-						<td class = "leftColumn">
-							SOMETHING
-						</td>
-						<td class = "rightColumn">
-							SOMETHING
-						</td>
-					</tr>
-					<tr>
-						<td class = "leftColumn">
-							SOMETHING
-						</td>
-						<td class = "rightColumn">
-							SOMETHING
-						</td>
-					</tr>
-					<tr>
-						<td class = "leftColumn">
-							SOMETHING
-						</td>
-						<td class = "rightColumn">
-							SOMETHING
-						</td>
-					</tr>
-					<tr>
-						<td class = "leftColumn">
-							SOMETHING
-						</td>
-						<td class = "rightColumn">
-							SOMETHING
-						</td>
-					</tr>
-					<tr>
-						<td class = "leftColumn">
-							SOMETHING
-						</td>
-						<td class = "rightColumn">
-							SOMETHING
-						</td>
-					</tr>
-					<tr>
-						<td class = "leftColumn">
-							SOMETHING
-						</td>
-						<td class = "rightColumn">
-							SOMETHING
-						</td>
-					</tr>
-					<tr>
-						<td class = "leftColumn">
-							SOMETHING
-						</td>
-						<td class = "rightColumn">
-							SOMETHING
-						</td>
-					</tr>
-					<tr>
-						<td class = "leftColumn">
-							SOMETHING
-						</td>
-						<td class = "rightColumn">
-							SOMETHING
-						</td>
-					</tr>
-					<tr>
-						<td class = "leftColumn">
-							SOMETHING
-						</td>
-						<td class = "rightColumn">
-							SOMETHING
-						</td>
-					</tr>
-					<tr>
-						<td class = "leftColumn">
-							SOMETHING
-						</td>
-						<td class = "rightColumn">
-							SOMETHING
-						</td>
-					</tr>
-					<tr>
-						<td class = "leftColumn">
-							SOMETHING
-						</td>
-						<td class = "rightColumn">
-							SOMETHING
-						</td>
-					</tr>
-					<tr>
-						<td class = "leftColumn">
-							SOMETHING
-						</td>
-						<td class = "rightColumn">
-							SOMETHING
-						</td>
-					</tr>
+					<?php
+						$result = $conn->query("SELECT * FROM Dijaki");
+						if($result !== false){
+							for($i = 0; $i < $result->num_rows; $i++){
+								$row = $result->fetch_assoc();
+								echo "<tr>";
+								echo "<td class = 'leftColumn'>" . $row["ime"] . "</td>";
+								echo "<td class = 'rightColumn'>" . $row["priimek"] . "</td>";
+								echo "</tr>";
+							}
+						}
+					?>
 				</table>
 			</div>
 		</div>
