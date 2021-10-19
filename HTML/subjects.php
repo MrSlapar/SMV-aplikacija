@@ -4,6 +4,15 @@
 		</title>
 		<link rel="stylesheet" href="../CSS/header.css">
 		<link rel="stylesheet" href="../CSS/loggedIndex.css">
+		<?php
+			$servername = "localhost";
+			$username = "root";
+			$password = "";
+
+			$conn = mysqli_connect($servername, $username, $password);
+			$conn->query("USE Eucilnica");
+			$result = $conn->query("SELECT id, naslov FROM Predmeti");
+		?>
 	</head>
 	<body>
 		<div class = "header">
@@ -47,11 +56,14 @@
 			<span id = "notificationTitle">
 				SUBJECTS
 			</span>
-			<div> <!-- array -->
-				<span>
-					Assignment 1
-				</span>
-			</div>
+			<?php
+				if($result !== false){
+					for($i = 0; $i < $result->num_rows; $i++){
+						$row = $result->fetch_assoc();
+						echo "<div id=" . $row["id"] . "><span>" . $row["naslov"] . "</span></div>";
+					}
+				}
+			?>
 		</div>
 		<div class = "main">
 			<div class = "subMain">
