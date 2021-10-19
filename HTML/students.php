@@ -3,7 +3,7 @@
 		<title>
 		</title>
 		<link rel="stylesheet" href="../CSS/header.css">
-		<link rel="stylesheet" href="../CSS/loggedIndex.css">
+		<link rel="stylesheet" href="../CSS/students.css">
 	</head>
 	<body>
 		<div class = "header">
@@ -43,19 +43,122 @@
 				</span>
 			</div>
 		</div>
-		<div class = "notifications">
-			<span id = "notificationTitle">
-				STUDENTS
-			</span>
-			<div> <!-- array -->
-				<span>
-					
-				</span>
-			</div>
-		</div>
 		<div class = "main">
-			<div class = "subMain">
-				<img src = "../images/scc/background.jpg" id = "mainImage">
+			<div class = "submain">
+				<table>
+					<tr>
+						<td class = "leftColumn">
+							SOMETHING
+						</td>
+						<td class = "rightColumn">
+							SOMETHING
+						</td>
+					</tr>
+					<tr>
+						<td class = "leftColumn">
+							SOMETHING
+						</td>
+						<td class = "rightColumn">
+							SOMETHING
+						</td>
+					</tr>
+					<tr>
+						<td class = "leftColumn">
+							SOMETHING
+						</td>
+						<td class = "rightColumn">
+							SOMETHING
+						</td>
+					</tr>
+					<tr>
+						<td class = "leftColumn">
+							SOMETHING
+						</td>
+						<td class = "rightColumn">
+							SOMETHING
+						</td>
+					</tr>
+					<tr>
+						<td class = "leftColumn">
+							SOMETHING
+						</td>
+						<td class = "rightColumn">
+							SOMETHING
+						</td>
+					</tr>
+					<tr>
+						<td class = "leftColumn">
+							SOMETHING
+						</td>
+						<td class = "rightColumn">
+							SOMETHING
+						</td>
+					</tr>
+					<tr>
+						<td class = "leftColumn">
+							SOMETHING
+						</td>
+						<td class = "rightColumn">
+							SOMETHING
+						</td>
+					</tr>
+					<tr>
+						<td class = "leftColumn">
+							SOMETHING
+						</td>
+						<td class = "rightColumn">
+							SOMETHING
+						</td>
+					</tr>
+					<tr>
+						<td class = "leftColumn">
+							SOMETHING
+						</td>
+						<td class = "rightColumn">
+							SOMETHING
+						</td>
+					</tr>
+					<tr>
+						<td class = "leftColumn">
+							SOMETHING
+						</td>
+						<td class = "rightColumn">
+							SOMETHING
+						</td>
+					</tr>
+					<tr>
+						<td class = "leftColumn">
+							SOMETHING
+						</td>
+						<td class = "rightColumn">
+							SOMETHING
+						</td>
+					</tr>
+					<tr>
+						<td class = "leftColumn">
+							SOMETHING
+						</td>
+						<td class = "rightColumn">
+							SOMETHING
+						</td>
+					</tr>
+					<tr>
+						<td class = "leftColumn">
+							SOMETHING
+						</td>
+						<td class = "rightColumn">
+							SOMETHING
+						</td>
+					</tr>
+					<tr>
+						<td class = "leftColumn">
+							SOMETHING
+						</td>
+						<td class = "rightColumn">
+							SOMETHING
+						</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</body>
