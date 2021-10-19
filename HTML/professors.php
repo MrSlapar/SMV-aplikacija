@@ -3,7 +3,15 @@
 		<title>
 		</title>
 		<link rel="stylesheet" href="../CSS/header.css">
-		<link rel="stylesheet" href="../CSS/loggedIndex.css">
+		<link rel="stylesheet" href="../CSS/students.css">
+		<?php
+			$servername = "localhost";
+			$username = "root";
+			$password = "";
+
+			$conn = mysqli_connect($servername, $username, $password);
+			$conn->query("USE Eucilnica");
+		?>
 	</head>
 	<body>
 		<div class = "header">
@@ -43,19 +51,22 @@
 				</span>
 			</div>
 		</div>
-		<div class = "notifications">
-			<span id = "notificationTitle">
-				PROFESSORS
-			</span>
-			<div> <!-- array -->
-				<span>
-					Assignment 1
-				</span>
-			</div>
-		</div>
 		<div class = "main">
-			<div class = "subMain">
-				<img src = "../images/scc/background.jpg" id = "mainImage">
+			<div class = "submain">
+				<table>
+					<?php
+						$result = $conn->query("SELECT * FROM Profesorji");
+						if($result !== false){
+							for($i = 0; $i < $result->num_rows; $i++){
+								$row = $result->fetch_assoc();
+								echo "<tr>";
+								echo "<td class = 'leftColumn'>" . $row["ime"] . "</td>";
+								echo "<td class = 'rightColumn'>" . $row["priimek"] . "</td>";
+								echo "</tr>";
+							}
+						}
+					?>
+				</table>
 			</div>
 		</div>
 	</body>
