@@ -43,7 +43,7 @@ body {
 }
 #subjectsHeader {
 	float: left;
-	margin-left: 1.7%;
+	margin-left: 1%;
 	padding-top: 22;
 	padding-bottom: 25;
 }
@@ -55,7 +55,13 @@ body {
 }
 #assignmentsHeader {
 	float: left;
-	margin-left: 5%;
+	margin-left: 4%;
+	padding-top: 22;
+	padding-bottom: 25;
+}
+#adminHeader {
+	float: left;
+	margin-left: 2.6%;
 	padding-top: 22;
 	padding-bottom: 25;
 }
