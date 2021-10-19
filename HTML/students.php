@@ -17,6 +17,11 @@
 					SUBJECTS
 				</span>
 			</div>
+			<div class = "item" id= "studentsHeader">
+				<span class = "headerText">
+					STUDENTS
+				</span>
+			</div>
 			<div class = "item" id= "professorsHeader">
 				<span class = "headerText">
 					PROFESSORS
@@ -25,6 +30,11 @@
 			<div class = "item" id= "assignmentsHeader">
 				<span class = "headerText">
 					ASSIGNMENTS
+				</span>
+			</div>
+			<div class = "item" id= "adminHeader">
+				<span class = "headerText">
+					ADMIN
 				</span>
 			</div>
 			<div class = "item" id= "loginHeader">

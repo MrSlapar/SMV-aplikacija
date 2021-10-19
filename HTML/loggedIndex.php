@@ -2,9 +2,8 @@
 	<head>
 		<title>
 		</title>
-		<meta charset="UTF-8">
 		<link rel="stylesheet" href="../CSS/header.css">
-		<link rel="stylesheet" href="../CSS/index.css">
+		<link rel="stylesheet" href="../CSS/loggedIndex.css">
 	</head>
 	<body>
 		<div class = "header">
@@ -16,6 +15,11 @@
 			<div class = "item" id= "subjectsHeader">
 				<span class = "headerText">
 					SUBJECTS
+				</span>
+			</div>
+			<div class = "item" id= "studentsHeader">
+				<span class = "headerText">
+					STUDENTS
 				</span>
 			</div>
 			<div class = "item" id= "professorsHeader">
@@ -35,18 +39,24 @@
 			</div>
 			<div class = "item" id= "loginHeader">
 				<span class = "headerText">
-					LOGIN
+					LOG OUT
 				</span>
 			</div>
 		</div>
-		<center>
-			<img src = "../images/scc/background2.png" id = "topImage">
-			<div class = "main">
-				<div>
-					School center Celje
-				</div>
+		<div class = "notifications">
+			<span id = "notificationTitle">
+				ASSIGNMENTS
+			</span>
+			<div> <!-- array -->
+				<span>
+					Assignment 1
+				</span>
 			</div>
-			<img src = "../images/scc/background3.png" id = "bottomImage">
-		</center>
+		</div>
+		<div class = "main">
+			<div class = "subMain">
+				<img src = "../images/scc/background.jpg" id = "mainImage">
+			</div>
+		</div>
 	</body>
 </html>

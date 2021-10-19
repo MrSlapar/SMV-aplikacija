@@ -47,6 +47,12 @@ body {
 	padding-top: 22;
 	padding-bottom: 25;
 }
+#studentsHeader {
+	float: left;
+	margin-left: 2%;
+	padding-top: 22;
+	padding-bottom: 25;
+}
 #professorsHeader {
 	float: left;
 	margin-left: 3%;
