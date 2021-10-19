@@ -1,0 +1,17 @@
+.main {
+	background: linear-gradient(90deg, rgba(18,187,163,1) 45%, rgba(3,198,222,1) 100%);
+	padding: 15px;
+	height: 80%;
+	width: 60%;
+	float: right;
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+.submain {
+	background-color: #ffffff;
+	overflow-x: hidden;
+	height: 100%;
+	width: 100%;
+}
