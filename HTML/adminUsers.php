@@ -47,7 +47,7 @@
 			<center>
 				<div class = "subMain">
 					<form>
-						<label for = "id">User ID:<br></label>
+						<label for = "id">Subject ID:<br></label>
 						<input type="text" id="id" name="userID">
 						<br><br>
 						<select name="user" id="user">
