@@ -20,14 +20,37 @@
 .mainChange	{
 	disp: block;
 	font-family: 'aquawax';
-	font-size: 250%;
+	font-size: 200%;
 	margin-top: auto;
 	margin-bottom: auto;
 	color: #ffffff;
-	opacity: 0.75;
-	transition: 0.5s;
 }
-.mainChange:hover{
-	opacity: 1;
-	cursor: pointer;
+#user {
+	width: 25%;
+	height: 5%;
+	text-align: center;
+	font-family: 'aquawax';
+	font-size: 15; 
+}
+input {
+	width: 25%;
+	height: 5%;
+	text-align: center;
+	font-family: 'aquawax';
+	font-size: 15;
+}
+form {
+	height: 100%;
+	width: 100%;
+	line-height: 4.5;
+  	display: inline-block;
+  	vertical-align: middle;
+}
+label {
+	width: 25%;
+	height: 5%;
+	text-align: center;
+	font-family: 'aquawax';
+	font-size: 20;
+	color: #ffffff;
 }

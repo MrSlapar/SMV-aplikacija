@@ -2,7 +2,7 @@ a{
 	text-decoration: none;
 }
 #login{
-	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(15,175,106,1) 0%, rgba(0,192,231,1) 100%);
+	background: linear-gradient(90deg, rgba(2,0,36,0.75) 0%, rgba(15,175,106,0.75) 0%, rgba(0,192,231,0.75) 100%);
 	width: 50%;
 	height: 50%;
 	margin: auto;
