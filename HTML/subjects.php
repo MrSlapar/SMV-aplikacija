@@ -17,34 +17,34 @@
 			$Profesor_Predmet = $conn->query("SELECT * FROM Profesor_Predmet");
 			
 			$Array_Predmeti = array();
-			while($row = $Predmeti->fetch_assoc()){
-				$Array_Predmeti = $row;
-			}
 			$Array_Profesorji = array();
-			while($row = $Profesorji->fetch_assoc()){
-				$Array_Profesorji = $row;
-			}
 			$Array_Profesor_Predmet = array();
-			while($row = $Profesor_Predmet->fetch_assoc()){
-				$Array_Profesor_Predmet = $row;
-			}
+			
+			for($i = 0; $row = $Predmeti->fetch_assoc(); $i++) $Array_Predmeti[$i] = $row;
+			for($i = 0; $row = $Profesorji->fetch_assoc(); $i++) $Array_Profesorji[$i] = $row;
+			for($i = 0; $row = $Profesor_Predmet->fetch_assoc(); $i++) $Array_Profesor_Predmet[$i] = $row;
+			
+			// fetch_assoc ti spremeni object, tak da je to nujno ponovit:
+			$Predmeti = $conn->query("SELECT * FROM Predmeti");
+			$Profesorji = $conn->query("SELECT * FROM Profesorji");
+			$Profesor_Predmet = $conn->query("SELECT * FROM Profesor_Predmet");	
 		?>
-		<script>		
-			function writeSubjectData(i){
-				var subMain = document.getElementsByClassName("subMain")[0];
-				
-				<?php
-					$Predmeti = $conn->query("SELECT * FROM Predmeti");
-					$Profesorji = $conn->query("SELECT * FROM Profesorji");
-					$Profesor_Predmet = $conn->query("SELECT * FROM Profesor_Predmet");				
-				?>
-								
-				var Predmeti = <?php echo json_encode($Predmeti)?>;
-				var Profesorji = <?php echo json_encode($Profesorji)?>;
-				var Profesor_Predmet = <?php echo json_encode($Profesor_Predmet)?>;
-				
-				var html = "<span class='headerText'>test</span>";
-				subMain.innerHTML = html;				
+		<script>	
+			var Predmeti = <?php echo json_encode($Array_Predmeti)?>;
+			var Profesorji = <?php echo json_encode($Array_Profesorji)?>;
+			var Profesor_Predmet = <?php echo json_encode($Array_Profesor_Predmet)?>;
+			
+			// table.length ne dela, zato sem uporabil row_num.
+			function getDataFromRow(table, row_num, id, data){
+				for(var i = 0; i < row_num; i++){
+					if(table[i]["id"] == id) return table[i][data];
+				}
+				return null;
+			}
+			
+			function writeSubjectData(i){			
+				var html = "<span class='headerText'>" + getDataFromRow(Predmeti, Predmeti.length, i, "naslov").toUpperCase() + "</span>";
+				document.getElementsByClassName("subMain")[0].innerHTML = html;
 			}
 		</script>
 	</head>
