@@ -64,9 +64,7 @@
 			?>
 		</div>
 		<div class = "main">
-			<div class = "subMain">
-				
-			</div>
+			<div class = "subMain"></div>
 		</div>
 	</body>
 </html>
