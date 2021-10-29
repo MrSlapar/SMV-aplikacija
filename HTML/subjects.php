@@ -11,24 +11,40 @@
 
 			$conn = mysqli_connect($servername, $username, $password);
 			$conn->query("USE Eucilnica");
-		?>
-		<script>
-			var Predmet_id_naslov = <?php echo json_encode($Predmet_id_naslov)?>;
-			var Profesorji_ALL = <?php echo json_encode($Profesorji_ALL)?>;
-			var Profesor_Predmet_ALL = <?php echo json_encode($Profesor_Predmet_ALL)?>;
 			
-			function writeSubjectData(var i){
-				var subMain = getElementsByClass("subMain");
+			$Predmeti = $conn->query("SELECT * FROM Predmeti");
+			$Profesorji = $conn->query("SELECT * FROM Profesorji");
+			$Profesor_Predmet = $conn->query("SELECT * FROM Profesor_Predmet");
+			
+			$Array_Predmeti = array();
+			while($row = $Predmeti->fetch_assoc()){
+				$Array_Predmeti = $row;
+			}
+			$Array_Profesorji = array();
+			while($row = $Profesorji->fetch_assoc()){
+				$Array_Profesorji = $row;
+			}
+			$Array_Profesor_Predmet = array();
+			while($row = $Profesor_Predmet->fetch_assoc()){
+				$Array_Profesor_Predmet = $row;
+			}
+		?>
+		<script>		
+			function writeSubjectData(i){
+				var subMain = document.getElementsByClassName("subMain")[0];
 				
 				<?php
 					$Predmeti = $conn->query("SELECT * FROM Predmeti");
 					$Profesorji = $conn->query("SELECT * FROM Profesorji");
-					$Profesor_Predmet = $conn->query("SELECT * FROM Profesor_Predmet");
-					
-					
+					$Profesor_Predmet = $conn->query("SELECT * FROM Profesor_Predmet");				
 				?>
+								
+				var Predmeti = <?php echo json_encode($Predmeti)?>;
+				var Profesorji = <?php echo json_encode($Profesorji)?>;
+				var Profesor_Predmet = <?php echo json_encode($Profesor_Predmet)?>;
 				
-				var html = "<span class='headerText'>" .  . "</span>"
+				var html = "<span class='headerText'>test</span>";
+				subMain.innerHTML = html;				
 			}
 		</script>
 	</head>
@@ -75,9 +91,9 @@
 				SUBJECTS
 			</span>
 			<?php
-				if($Predmet_id_naslov !== false){
-					for($i = 0; $i < $Predmet_id_naslov->num_rows; $i++){
-						$row = $Predmet_id_naslov->fetch_assoc();
+				if($Predmeti !== false && $Predmeti !== null){
+					for($i = 0; $i < $Predmeti->num_rows; $i++){
+						$row = $Predmeti->fetch_assoc();
 						echo "<div onclick=writeSubjectData(" . $row["id"] . ")><span>" . $row["naslov"] . "</span></div>";
 					}
 				}
