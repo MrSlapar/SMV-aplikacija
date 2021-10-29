@@ -24,7 +24,7 @@
 			for($i = 0; $row = $Profesorji->fetch_assoc(); $i++) $Array_Profesorji[$i] = $row;
 			for($i = 0; $row = $Profesor_Predmet->fetch_assoc(); $i++) $Array_Profesor_Predmet[$i] = $row;
 			
-			// fetch_assoc ti spremeni object, tak da je to nujno ponovit:
+			// fetch_assoc ti spremeni objekt, tak da je to nujno ponovit, ker so objekti kasneje uporabljeni.
 			$Predmeti = $conn->query("SELECT * FROM Predmeti");
 			$Profesorji = $conn->query("SELECT * FROM Profesorji");
 			$Profesor_Predmet = $conn->query("SELECT * FROM Profesor_Predmet");	
