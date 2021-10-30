@@ -60,7 +60,7 @@
 						soProfesorji = true;
 					}
 				}
-				if(!soProfesorji) html += "This subjects has no professors."
+				if(!soProfesorji) html += "This subject has no professors."
 				html += "</ul>";
 				
 				// Izpis nalog

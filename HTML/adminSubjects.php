@@ -10,7 +10,7 @@
 		<div class = "main">
 			<center>
 				<div class = "subMain">
-					<form>
+					<form action="adminSubjectsPHP.php" method="post">
 						<label for = "id">Subject ID:<br></label>
 						<input type="text" id="id" name="userID">
 						<br><br>
