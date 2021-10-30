@@ -48,15 +48,6 @@
 				return null;
 			}
 			
-			// Deluje isto kot getDataFromRow, ampak je namenjeno tabelam, kjer ni PK.
-			function getDataFromRow2(table, row_num, id_name, id, data){
-				var dataArray = [];
-				for(var i = 0; i < row_num; i++){
-					if(table[i][id_name] == id) dataArray.push(table[i][data]);
-				}
-				return dataArray;
-			}
-			
 			function writeSubjectData(i){			
 				var html = "<span class='mainTitle'>" + getDataFromRow(Predmeti, Predmeti.length, i, "naslov") + " (" + getDataFromRow(Predmeti, Predmeti.length, i, "kratica") + ")" + "</span>" + // Naslov predmeta in kratica
 						   "<br><span class='title'>Professors:</span><ul>";
