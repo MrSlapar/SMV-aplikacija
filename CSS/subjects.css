@@ -3,3 +3,14 @@
 	height: 80;
 	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(15,175,106,1) 0%, rgba(0,192,231,1) 100%);
 }
+.subMain{
+	font-family: aquawax;
+	font-size: 15;
+	color: dimgray;
+}
+.subMain>span.mainTitle{
+	font-size: 45;
+}
+.subMain>span.title{
+	font-size: 30;
+}

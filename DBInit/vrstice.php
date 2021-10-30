@@ -171,4 +171,9 @@ $conn->query("
 	('Sofija', 'Softlock', ''),
 	('Hana', 'Banana', '')
 ");
+
+$conn->query("
+	INSERT INTO Naloge(id_predmeta, id_profesorja, cas_objave, cas_za_oddajo, navodila) VALUES
+	(3, 1, NOW(), DATE_ADD(NOW(), INTERVAL 1 WEEK), 'Za to nalogo morate prebrati 17 knjig ki imajo vsaj 500 strani. Ko jih preberete, napišite vse ključne podatke o avtorju, glavnih osebah, glavnih stranskih osebah, stranskih glavnih osebah in o času, v katerem se glavni dogodek knjige dogaja.') 
+")
 ?>

@@ -4,6 +4,7 @@
 		</title>
 		<link rel="stylesheet" href="../CSS/header.css">
 		<link rel="stylesheet" href="../CSS/loggedIndex.css">
+		<link rel="stylesheet" href="../CSS/subjects.css">
 		<?php
 			$servername = "localhost";
 			$username = "root";
@@ -52,8 +53,8 @@
 			}
 			
 			function writeSubjectData(i){			
-				var html = "<span>" + getDataFromRow(Predmeti, Predmeti.length, i, "naslov") + " (" + getDataFromRow(Predmeti, Predmeti.length, i, "kratica") + ")" + "</span>" + // Naslov predmeta in kratica
-						   "<br>Professors:<ul>";
+				var html = "<span class='mainTitle'>" + getDataFromRow(Predmeti, Predmeti.length, i, "naslov") + " (" + getDataFromRow(Predmeti, Predmeti.length, i, "kratica") + ")" + "</span>" + // Naslov predmeta in kratica
+						   "<br><span class='title'>Professors:</span><ul>";
 				
 				// Izpis profesorjev
 				var soProfesorji = false;
@@ -64,10 +65,10 @@
 					}
 				}
 				if(!soProfesorji) html += "This subject doesn't have any professors."
-				html += "</ul><br>";
+				html += "</ul>";
 				
 				// Izpis nalog
-				html += "<span>Assignments:</span>";
+				html += "<span class='title'>Assignments:</span>";
 				
 				document.getElementsByClassName("subMain")[0].innerHTML = html;
 			}

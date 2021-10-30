@@ -46,8 +46,9 @@ $conn->query("
 		id_predmeta int NOT NULL,
 		id_profesorja int NOT NULL,
 		cas_objave datetime NOT NULL,
-		cas_za_oddajo datatime NOT NULL,
-		navodila varchar(500) NOT NULL,
+		cas_za_oddajo datetime NOT NULL,
+		naslov varchar(30) NOT NULL,
+		navodila varchar(500) NOT NULL
 	)
 ");
 ?>
