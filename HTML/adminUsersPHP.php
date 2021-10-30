@@ -32,4 +32,6 @@ switch($_POST["user"]){
 		);	
 		break;
 }
+
+header("Location: adminUsers.php");
 ?>

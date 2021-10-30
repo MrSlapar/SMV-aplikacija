@@ -31,4 +31,6 @@ switch($_POST["user"]){
 		);	
 		break;
 }
+
+header("Location: adminSubjects.php");
 ?>
