@@ -11,11 +11,15 @@
 			<center>
 				<div class = "subMain">
 					<span class = "mainChange" onclick = "location.href='adminUsers.php'">
-						EDIT USER
+						EDIT STUDENTS
+					</span>
+					<br>
+					<span class = "mainChange" onclick = "location.href='adminProfessors.php'">
+						EDIT PROFESSORS
 					</span>
 					<br>
 					<span class = "mainChange" onclick = "location.href='adminSubjects.php'">
-						EDIT SUBJECT
+						EDIT SUBJECTS
 					</span>
 					<br>
 					<span class = "mainChange">
