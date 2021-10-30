@@ -20,8 +20,8 @@
 		</span>
 	</div>
 	<div class = "item" id= "assignmentsHeader">
-		<span class = "headerText" onclick = "location.href='assignments.php'">
-			ASSIGNMENTS
+		<span class = "headerText" onclick = "location.href='files.php'">
+			FILES
 		</span>
 	</div>
 	<div class = "item" id= "adminHeader">

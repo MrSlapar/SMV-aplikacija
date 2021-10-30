@@ -73,7 +73,7 @@
 						html += "<span>" + Naloge[j]["navodila"] + "</span><br><br>"
 						html += "<span>Date of creation: " + Naloge[j]["cas_objave"] + "</span><br>"
 						html += "<span>Date until assignment is due: " + Naloge[j]["cas_za_oddajo"] + "</span>"
-						html += "</li>";
+						html += "</li><br>";
 						imaNaloge = true;
 					}
 				}
@@ -86,10 +86,8 @@
 	</head>
 	<body>
 		<?php include "header.php"?>
-		<div class = "notifications">
-			<span id = "notificationTitle">
-				SUBJECTS
-			</span>
+		<div class = "notifications" style="overflow-x: hidden;">
+			<span id = "notificationTitle">SUBJECTS</span>
 			<?php
 				if($Predmeti !== false && $Predmeti !== null){
 					for($i = 0; $i < $Predmeti->num_rows; $i++){
@@ -99,8 +97,8 @@
 				}
 			?>
 		</div>
-		<div class = "main">
-			<div class = "subMain"></div>
+		<div class="main">
+			<div class="subMain" style="overflow-x: hidden;"></div>
 		</div>
 	</body>
 </html>
