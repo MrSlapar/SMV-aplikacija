@@ -34,10 +34,9 @@ $conn->query("
 ");
 
 $conn->query("
-	CREATE TABLE Profesor_predmet(
+	CREATE TABLE Profesor_Predmet(
 		id_profesorja int NOT NULL,
-		id_dijaka int NOT NULL,
-		PRIMARY KEY (id_profesorja, id_dijaka)
+		id_predmeta int NOT NULL
 	)
 ");
 ?>

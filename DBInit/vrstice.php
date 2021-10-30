@@ -45,6 +45,30 @@ $conn->query("
 ");
 
 $conn->query("
+	INSERT INTO Profesor_Predmet(id_profesorja, id_predmeta) VALUES
+	(1, 1),
+	(2, 2),
+	(3, 10),
+	(4, 9),
+	(5, 9),
+	(6, 6),
+	(7, 10),
+	(8, 4),
+	(9, 9),
+	(10, 10),
+	(11, 9),
+	(12, 2),
+	(13, 1),
+	(14, 7),
+	(15, 5),
+	(16, 3),
+	(17, 6),
+	(18, 1),
+	(19, 9),
+	(20, 1)
+");
+
+$conn->query("
 	INSERT INTO Dijaki(ime, priimek, password) VALUES
 	('Tristan', 'Gajšek', ''),
 	('Domen', 'Laznik', ''),
