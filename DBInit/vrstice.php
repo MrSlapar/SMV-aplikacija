@@ -8,16 +8,16 @@ $conn->query("USE Eucilnica");
 
 $conn->query("
 	INSERT INTO Predmeti(naslov, kratica) VALUES
-	('Matematika', 'MAT'),
-	('Angleščina', 'ANG'),
-	('Slovenščina', 'SLO'),
-	('Sociologija', 'SOC'),
-	('Zgodovina', 'ZGO'),
-	('Geografija', 'GEO'),
-	('Glasba', 'GLA'),
-	('Likovna', 'LIK'),
-	('Vzdrževanje informacijske strojne opreme', 'VIS'),
-	('Stroka modernih vsebin', 'SMV')
+	('Math', 'MAT'),
+	('English', 'ENG'),
+	('Slovene', 'SLO'),
+	('Sociology', 'SOC'),
+	('History', 'HIS'),
+	('Geography', 'GEO'),
+	('Music', 'MUS'),
+	('Art', 'ART'),
+	('Networking', 'NET'),
+	('Programming', 'PRO')
 ");
 
 $conn->query("
@@ -173,7 +173,7 @@ $conn->query("
 ");
 
 $conn->query("
-	INSERT INTO Naloge(id_predmeta, id_profesorja, cas_objave, cas_za_oddajo, navodila) VALUES
-	(3, 1, NOW(), DATE_ADD(NOW(), INTERVAL 1 WEEK), 'Za to nalogo morate prebrati 17 knjig ki imajo vsaj 500 strani. Ko jih preberete, napišite vse ključne podatke o avtorju, glavnih osebah, glavnih stranskih osebah, stranskih glavnih osebah in o času, v katerem se glavni dogodek knjige dogaja.') 
-")
+	INSERT INTO Naloge(id_predmeta, id_profesorja, cas_objave, cas_za_oddajo, naslov, navodila) VALUES
+	(3, 1, NOW(), DATE_ADD(NOW(), INTERVAL 1 WEEK), 'First home reading', 'For this assignment, you must read atleast 17 books with 500 pages or more. Once you have completed your reading, you must put down everything in relation to the story, characters, environment, and genre of the books you\\'ve read.') 
+");
 ?>

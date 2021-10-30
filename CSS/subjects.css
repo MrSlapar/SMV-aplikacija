@@ -8,9 +8,12 @@
 	font-size: 15;
 	color: dimgray;
 }
-.subMain>span.mainTitle{
+span.mainTitle{
 	font-size: 45;
 }
-.subMain>span.title{
+span.title{
 	font-size: 30;
+}
+li>span.title{
+	font-size: 25;
 }
