@@ -42,8 +42,33 @@
 				return null;
 			}
 			
+			// Deluje isto kot getDataFromRow, ampak je namenjeno tabelam, kjer ni PK.
+			function getDataFromRow2(table, row_num, id_name, id, data){
+				var dataArray = [];
+				for(var i = 0; i < row_num; i++){
+					if(table[i][id_name] == id) dataArray.push(table[i][data]);
+				}
+				return dataArray;
+			}
+			
 			function writeSubjectData(i){			
-				var html = "<span class='headerText'>" + getDataFromRow(Predmeti, Predmeti.length, i, "naslov").toUpperCase() + "</span>";
+				var html = "<span>" + getDataFromRow(Predmeti, Predmeti.length, i, "naslov") + " (" + getDataFromRow(Predmeti, Predmeti.length, i, "kratica") + ")" + "</span>" + // Naslov predmeta in kratica
+						   "<br>Professors:<ul>";
+				
+				// Izpis profesorjev
+				var soProfesorji = false;
+				for(var j = 0; j < Profesor_Predmet.length; j++){
+					if(Profesor_Predmet[j]["id_predmeta"] == i){
+						html += "<li>" + getDataFromRow(Profesorji, Profesorji.length, Profesor_Predmet[j]["id_profesorja"], "ime") + " " + getDataFromRow(Profesorji, Profesorji.length, Profesor_Predmet[j]["id_profesorja"], "priimek") + "</li>"
+						soProfesorji = true;
+					}
+				}
+				if(!soProfesorji) html += "This subject doesn't have any professors."
+				html += "</ul><br>";
+				
+				// Izpis nalog
+				html += "<span>Assignments:</span>";
+				
 				document.getElementsByClassName("subMain")[0].innerHTML = html;
 			}
 		</script>

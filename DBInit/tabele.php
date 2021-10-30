@@ -39,4 +39,15 @@ $conn->query("
 		id_predmeta int NOT NULL
 	)
 ");
+
+$conn->query("
+	CREATE TABLE Naloge(
+		id int PRIMARY KEY AUTO_INCREMENT,
+		id_predmeta int NOT NULL,
+		id_profesorja int NOT NULL,
+		cas_objave datetime NOT NULL,
+		cas_za_oddajo datatime NOT NULL,
+		navodila varchar(500) NOT NULL,
+	)
+");
 ?>
