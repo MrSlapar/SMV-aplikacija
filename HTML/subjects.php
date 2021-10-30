@@ -69,10 +69,11 @@
 				for(var j = 0; j < Naloge.length; j++){
 					if(Naloge[j]["id_predmeta"] == i){
 						html += "<li>";
-						html += "<span class='title'>" + Naloge[j]["naslov"] + "</span><br>"
-						html += "<span>" + Naloge[j]["navodila"] + "</span><br><br>"
-						html += "<span>Date of creation: " + Naloge[j]["cas_objave"] + "</span><br>"
-						html += "<span>Date until assignment is due: " + Naloge[j]["cas_za_oddajo"] + "</span>"
+						html += "<span class='title'>" + Naloge[j]["naslov"] + "</span><br>";
+						html += "<span>Author: " + getDataFromRow(Profesorji, Profesorji.length, Naloge[j]["id_profesorja"], "ime") + " " + getDataFromRow(Profesorji, Profesorji.length, Naloge[j]["id_profesorja"], "priimek") + "</span><br><br>";
+						html += "<span>" + Naloge[j]["navodila"] + "</span><br><br>";
+						html += "<span>Date of creation: " + Naloge[j]["cas_objave"] + "</span><br>";
+						html += "<span>Date until assignment is due: " + Naloge[j]["cas_za_oddajo"] + "</span>";
 						html += "</li><br>";
 						imaNaloge = true;
 					}
