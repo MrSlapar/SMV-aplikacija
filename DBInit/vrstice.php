@@ -41,7 +41,8 @@ $conn->query("
 	('Boštjan', 'Fidler', ''),
 	('Igor', 'Gobec', ''),
 	('Andrej', 'Grilc', ''),
-	('Bojan', 'Herman', '')
+	('Bojan', 'Herman', ''),
+	('Barack', 'Obama', '" . password_hash("SADVAUZIJA", PASSWORD_DEFAULT) . "')
 ");
 
 $conn->query("

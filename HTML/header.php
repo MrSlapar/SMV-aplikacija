@@ -24,11 +24,24 @@
 			FILES
 		</span>
 	</div>
-	<div class = "item" id= "adminHeader">
-		<span class = "headerText" onclick = "location.href='admin.php'">
-			ADMIN
-		</span>
-	</div>
+	<?php
+	if($_SESSION["type"] == "professor"){
+	echo
+	   "<div class = \"item\" id= \"assignmentsHeader\">
+			<span class = \"headerText\" onclick = \"location.href='assignments.php'\">
+				ASSIGNMENTS
+			</span>
+		</div>";
+	}
+	if($_SESSION["id"] == 21 && $_SESSION["type"] == "professor"){
+	echo
+	   "<div class = \"item\" id= \"adminHeader\">
+			<span class = \"headerText\" onclick = \"location.href='admin.php'\">
+				ADMIN
+			</span>
+		</div>";
+	}
+	?>
 	<div class = "item" id= "loginHeader">
 		<span class = "headerText" onclick = "location.href='login.php'">
 			LOG OUT
