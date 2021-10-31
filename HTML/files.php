@@ -30,8 +30,8 @@
 			for($i = 0; $row = $Naloge->fetch_assoc(); $i++) $Array_Naloge[$i] = $row;
 			
 			// fetch_assoc ti spremeni objekt, tak da je to nujno ponovit, ker so objekti kasneje uporabljeni.
-			$Dijaki = $conn->query("SELECT * FROM Dijaki");
-			$Profesorji = $conn->query("SELECT * FROM Profesorji");
+			$Dijaki = $conn->query("SELECT * FROM Dijaki ORDER BY ime, priimek");
+			$Profesorji = $conn->query("SELECT * FROM Profesorji ORDER BY ime, priimek");
 			$Datoteke = $conn->query("SELECT * FROM Datoteke");	
 			$Naloge = $conn->query("SELECT * FROM Naloge");
 		?>

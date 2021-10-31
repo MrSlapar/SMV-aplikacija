@@ -20,7 +20,7 @@
 			<div class = "submain">
 				<table>
 					<?php
-						$result = $conn->query("SELECT * FROM Dijaki");
+						$result = $conn->query("SELECT * FROM Dijaki ORDER BY ime, priimek");
 						if($result !== false){
 							for($i = 0; $i < $result->num_rows; $i++){
 								$row = $result->fetch_assoc();
