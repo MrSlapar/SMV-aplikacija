@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+if($_POST["filename"] == "" || $_FILES["file"]["tmp_name"] == ""){
+	$_SESSION["filesMessage"] = "You seem to have left out some information while uploading the file.";
+	header("Location: files.php");
+	exit();
+}
+
 $servername = "localhost";
 $username = "root";
 $password = "";

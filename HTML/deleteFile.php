@@ -14,4 +14,8 @@ if($result !== false){
 	unlink("../files/" . $row["pot"]);
 	$conn->query("DELETE FROM Datoteke WHERE pot = '" . $row["pot"] . "'");
 }
+
+$_SESSION["filesMessage"] = "Your files have been deleted successfully.";
+header("Location: files.php");
+exit();
 ?>
