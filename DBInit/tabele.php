@@ -59,10 +59,8 @@ $conn->query("
 		id_uporabnika int NOT NULL,
 		tip_uporabnika varchar(9) NOT NULL,
 		cas_objave datetime NOT NULL,
+		pot varchar(300) NOT NULL,
 		id_assignmenta int
 	)
 ");
 ?>
-
-	INSERT INTO Datoteke(ime, id_uporabnika, tip_uporabnika, cas_objave, id_assignmenta) VALUES
-	('Test', 21, 'professor', NOW(), 1)
