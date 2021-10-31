@@ -4,7 +4,7 @@
 		<link rel="stylesheet" href="../CSS/login-signup.css">
 	</head>
 	<body>
-		<?php include "header.php"?>
+		<?php include "headerNotLogged.php"?>
 		<div id = "login">
 			<form action="login-check.php" method="post">
 				<table>

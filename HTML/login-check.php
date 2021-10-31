@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -6,15 +8,28 @@ $password = "";
 $conn = mysqli_connect($servername, $username, $password);
 $conn->query("USE Eucilnica");
 
-$result = $conn->query("SELECT password FROM Dijaki WHERE ime = '" . $_POST["name"] . "' AND priimek = '" . $_POST["surname"] . "'");
+$result = $conn->query("SELECT id, password FROM Profesorji WHERE ime = '" . $_POST["name"] . "' AND priimek = '" . $_POST["surname"] . "'");
 if($result !== false && $result->num_rows > 0){
 	$row = $result->fetch_assoc();
 	if(password_verify($_POST["password"], $row["password"])){
-		header("Location: index.php?id=" . $row["id"]);
-	}else{
-		header("Location: login.php");
+		$_SESSION["id"] = $row["id"];
+		$_SESSION["type"] = "professor";
+		header("Location: index.php");
+		exit();
 	}
-}else{
-	header("Location: login.php");
 }
+
+$result = $conn->query("SELECT id, password FROM Dijaki WHERE ime = '" . $_POST["name"] . "' AND priimek = '" . $_POST["surname"] . "'");
+if($result !== false && $result->num_rows > 0){
+	$row = $result->fetch_assoc();
+	if(password_verify($_POST["password"], $row["password"])){
+		$_SESSION["id"] = $row["id"];
+		$_SESSION["type"] = "student";
+		header("Location: index.php");
+		exit();
+	}
+}
+
+header("Location: login.php");
+exit();
 ?>
