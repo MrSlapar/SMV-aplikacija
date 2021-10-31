@@ -51,4 +51,18 @@ $conn->query("
 		navodila varchar(500) NOT NULL
 	)
 ");
+
+$conn->query("
+	CREATE TABLE Datoteke(
+		id int PRIMARY KEY AUTO_INCREMENT,
+		ime varchar(30) NOT NULL,
+		id_uporabnika int NOT NULL,
+		tip_uporabnika varchar(9) NOT NULL,
+		cas_objave datetime NOT NULL,
+		id_assignmenta int
+	)
+");
 ?>
+
+	INSERT INTO Datoteke(ime, id_uporabnika, tip_uporabnika, cas_objave, id_assignmenta) VALUES
+	('Test', 21, 'professor', NOW(), 1)

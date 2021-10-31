@@ -14,31 +14,31 @@
 			$conn = mysqli_connect($servername, $username, $password);
 			$conn->query("USE Eucilnica");
 			
-			$Predmeti = $conn->query("SELECT * FROM Predmeti");
+			$Dijaki = $conn->query("SELECT * FROM Dijaki");
 			$Profesorji = $conn->query("SELECT * FROM Profesorji");
-			$Profesor_Predmet = $conn->query("SELECT * FROM Profesor_Predmet");
+			$Datoteke = $conn->query("SELECT * FROM Datoteke");
 			$Naloge = $conn->query("SELECT * FROM Naloge");
 			
-			$Array_Predmeti = array();
+			$Array_Dijaki = array();
 			$Array_Profesorji = array();
-			$Array_Profesor_Predmet = array();
+			$Array_Datoteke = array();
 			$Array_Naloge = array();
 			
-			for($i = 0; $row = $Predmeti->fetch_assoc(); $i++) $Array_Predmeti[$i] = $row;
+			for($i = 0; $row = $Dijaki->fetch_assoc(); $i++) $Array_Dijaki[$i] = $row;
 			for($i = 0; $row = $Profesorji->fetch_assoc(); $i++) $Array_Profesorji[$i] = $row;
-			for($i = 0; $row = $Profesor_Predmet->fetch_assoc(); $i++) $Array_Profesor_Predmet[$i] = $row;
+			for($i = 0; $row = $Datoteke->fetch_assoc(); $i++) $Array_Datoteke[$i] = $row;
 			for($i = 0; $row = $Naloge->fetch_assoc(); $i++) $Array_Naloge[$i] = $row;
 			
 			// fetch_assoc ti spremeni objekt, tak da je to nujno ponovit, ker so objekti kasneje uporabljeni.
-			$Predmeti = $conn->query("SELECT * FROM Predmeti");
+			$Dijaki = $conn->query("SELECT * FROM Dijaki");
 			$Profesorji = $conn->query("SELECT * FROM Profesorji");
-			$Profesor_Predmet = $conn->query("SELECT * FROM Profesor_Predmet");	
+			$Datoteke = $conn->query("SELECT * FROM Datoteke");	
 			$Naloge = $conn->query("SELECT * FROM Naloge");
 		?>
 		<script>	
-			var Predmeti = <?php echo json_encode($Array_Predmeti)?>;
+			var Dijaki = <?php echo json_encode($Array_Dijaki)?>;
 			var Profesorji = <?php echo json_encode($Array_Profesorji)?>;
-			var Profesor_Predmet = <?php echo json_encode($Array_Profesor_Predmet)?>;
+			var Datoteke = <?php echo json_encode($Array_Datoteke)?>;
 			var Naloge = <?php echo json_encode($Array_Naloge)?>;
 			
 			// table.length ne dela, zato sem uporabil row_num.
@@ -49,38 +49,29 @@
 				return null;
 			}
 			
-			function writeSubjectData(i){			
-				var html = "<span class='mainTitle'>" + getDataFromRow(Predmeti, Predmeti.length, i, "naslov") + " (" + getDataFromRow(Predmeti, Predmeti.length, i, "kratica") + ")" + "</span>" + // Naslov predmeta in kratica
-						   "<br><span class='title'>Professors:</span><ul>";
+			function writeFileData(id, type){
+				if(type == "professor") var studentsOrProfessors = Profesorji;
+				else if(type == "student") var studentsOrProfessors = Dijaki;
 				
-				// Izpis profesorjev
-				var soProfesorji = false;
-				for(var j = 0; j < Profesor_Predmet.length; j++){
-					if(Profesor_Predmet[j]["id_predmeta"] == i){
-						html += "<li>" + getDataFromRow(Profesorji, Profesorji.length, Profesor_Predmet[j]["id_profesorja"], "ime") + " " + getDataFromRow(Profesorji, Profesorji.length, Profesor_Predmet[j]["id_profesorja"], "priimek") + "</li>"
-						soProfesorji = true;
-					}
-				}
-				if(!soProfesorji) html += "This subjects has no professors."
-				html += "</ul>";
+				var html = "<span class='mainTitle'>" +
+							getDataFromRow(studentsOrProfessors, studentsOrProfessors.length, id, "ime") + " " +
+							getDataFromRow(studentsOrProfessors, studentsOrProfessors.length, id, "priimek") + "</span>" +
+						   "<br><span class='title'>Files:</span><ul>";
 				
-				// Izpis nalog
-				var imaNaloge = false;
-				html += "<span class='title'>Assignments:</span><ul>";
-				for(var j = 0; j < Naloge.length; j++){
-					if(Naloge[j]["id_predmeta"] == i){
+				// Izpis datotek
+				var imaDatoteke = false;
+				for(var i = 0; i < Datoteke.length; i++){
+					if(Datoteke[i]["id_uporabnika"] == id && Datoteke[i]["tip_uporabnika"] == type){
 						html += "<li>";
-						html += "<span class='title'>" + Naloge[j]["naslov"] + "</span><br>";
-						html += "<span>Author: " + getDataFromRow(Profesorji, Profesorji.length, Naloge[j]["id_profesorja"], "ime") + " " + getDataFromRow(Profesorji, Profesorji.length, Naloge[j]["id_profesorja"], "priimek") + "</span><br><br>";
-						html += "<span>" + Naloge[j]["navodila"] + "</span><br><br>";
-						html += "<span>Date of creation: " + Naloge[j]["cas_objave"] + "</span><br>";
-						html += "<span>Date until assignment is due: " + Naloge[j]["cas_za_oddajo"] + "</span>";
+						html += "<span class='title'>" + Datoteke[i]["ime"] + "</span><br><br>";
+						html += "<span>Date of upload: " + Datoteke[i]["cas_objave"] + "</span><br><br>";
+						html += "<span>Intended as resolution for assignment: " + getDataFromRow(Naloge, Naloge.length, Datoteke[i]["id_assignmenta"], "naslov") + "</span><br><br>";
 						html += "</li><br>";
-						imaNaloge = true;
+						imaDatoteke = true;
 					}
 				}
-				if(!imaNaloge) html += "This subject has no assignemnts."
-				html += "</ul>";
+				if(!imaDatoteke) html += "This person has yet to upload any files."
+				html += "</ul>"
 				
 				document.getElementsByClassName("subMain")[0].innerHTML = html;
 			}
@@ -89,12 +80,28 @@
 	<body>
 		<?php include "header.php"?>
 		<div class = "notifications" style="overflow-x: hidden;">
-			<span id = "notificationTitle">SUBJECTS</span>
+			<span id = "notificationTitle">FILES</span>
+			<?php echo "<div onclick=\"writeFileData(" . $_SESSION["id"] . ", '" . $_SESSION["type"] . "')\"><span>My files</span></div>"; ?>
+			<span id = "notificationTitle">STUDENTS</span>
 			<?php
-				if($Predmeti !== false && $Predmeti !== null){
-					for($i = 0; $i < $Predmeti->num_rows; $i++){
-						$row = $Predmeti->fetch_assoc();
-						echo "<div onclick=writeSubjectData(" . $row["id"] . ")><span>" . $row["naslov"] . "</span></div>";
+				// Izpis dijakov
+				if($Dijaki !== false){
+					for($i = 0; $i < $Dijaki->num_rows; $i++){
+						$row = $Dijaki->fetch_assoc();
+						if($row["id"] != $_SESSION["id"]){
+							echo "<div onclick=\"writeFileData(" . $row["id"] . ", 'student')\"><span>" . $row["ime"] . " " . $row["priimek"] . "</span></div>";
+						}
+					}
+				}
+				
+				// Izpis profesorjev
+				if($Profesorji !== false && $_SESSION["type"] == "professor"){
+					echo "<span id=\"notificationTitle\">PROFESSORS</span>";
+					for($i = 0; $i < $Profesorji->num_rows; $i++){
+						$row = $Profesorji->fetch_assoc();
+						if($row["id"] != $_SESSION["id"]){
+							echo "<div onclick=\"writeFileData(" . $row["id"] . ", 'professor')\"><span>" . $row["ime"] . " " . $row["priimek"] . "</span></div>";
+						}
 					}
 				}
 			?>

@@ -24,7 +24,7 @@
 					</span>
 					<br>
 					<span class = "mainChange">
-						EDIT ASSIGNMENT
+						ADD/REMOVE PROFESSORS FROM SUBJECTS
 					</span>
 				</div>
 			</center>
