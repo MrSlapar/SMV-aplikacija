@@ -86,7 +86,12 @@
 				for(var i = 0; i < Datoteke.length; i++){
 					if(Datoteke[i]["id_uporabnika"] == id && Datoteke[i]["tip_uporabnika"] == type){
 						html += "<li>";
-						html += "<span class='title'>" + Datoteke[i]["ime"] + "</span><br>";
+						if(isMe) html += "<form action=\"deleteFile.php\" method=\"post\">";
+						html += "<span class='title'>" + Datoteke[i]["ime"] + "</span> &nbsp ";
+						if(isMe){
+							html += "<input type=\"hidden\" name=\"id\" value=\"" + Datoteke[i]["id"] + "\">"; 
+							html += "<input type=\"submit\" value=\"Delete file\"></form>";
+						}
 						html += "<span>Time of upload: " + Datoteke[i]["cas_objave"] + "</span><br>";
 						if(Datoteke[i]["id_assignmenta"] != 0) html += "<span>Intended for assignment: " + getDataFromRow(Naloge, Naloge.length, Datoteke[i]["id_assignmenta"], "naslov") + "</span><br><br>";
 						html += "</li><br>";
@@ -136,7 +141,6 @@
 						echo "<span class=\"title\">" . $_SESSION["filesMessage"] . "</span>";
 						unset($_SESSION["filesMessage"]);
 					}
-					
 				?>
 			</div>
 		</div>
