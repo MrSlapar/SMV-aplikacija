@@ -68,7 +68,7 @@
 					html += "Select file: <input type=\"file\" name=\"file\"><br>";
 					html += "File name: <input name=\"filename\"><br>";
 					html += "Intended for assignment: <select name=\"assignment\">";
-					html += "<option>None</option>"
+					html += "<option value=\"0\">None</option>"
 					for(var i = 0; i < Naloge.length; i++){
 						html += "<option value=\"" + Naloge[i]["id"] + "\">";
 						html += Naloge[i]["naslov"];
@@ -88,7 +88,7 @@
 						html += "<li>";
 						html += "<span class='title'>" + Datoteke[i]["ime"] + "</span><br>";
 						html += "<span>Time of upload: " + Datoteke[i]["cas_objave"] + "</span><br>";
-						html += "<span>Intended for assignment: " + getDataFromRow(Naloge, Naloge.length, Datoteke[i]["id_assignmenta"], "naslov") + "</span><br><br>";
+						if(Datoteke[i]["id_assignmenta"] != 0) html += "<span>Intended for assignment: " + getDataFromRow(Naloge, Naloge.length, Datoteke[i]["id_assignmenta"], "naslov") + "</span><br><br>";
 						html += "</li><br>";
 						imaDatoteke = true;
 					}
@@ -130,7 +130,15 @@
 			?>
 		</div>
 		<div class="main">
-			<div class="subMain" style="overflow-x: hidden;"></div>
+			<div class="subMain" style="overflow-x: hidden;">
+				<?php
+					if(isset($_SESSION["filesMessage"])){
+						echo "<span class=\"title\">" . $_SESSION["filesMessage"] . "</span>";
+						unset($_SESSION["filesMessage"]);
+					}
+					
+				?>
+			</div>
 		</div>
 	</body>
 </html>
