@@ -66,7 +66,7 @@
 					html += "Assignment title: <input name=\"title\"><br>";
 					html += "Assignment instructions:<br><textarea rows=\"5\" cols=\"100\" name=\"instructions\"></textarea><br>";
 					html += "Date until assignment is due: <input type=\"date\" name=\"date\"><br>";
-					html += "Time until assignment is due: <input type=\"time\" name=\"time\"><br>";
+					html += "Time until assignment is due: <input type=\"time\" name=\"time\" step=\"1\"><br>";
 					html += "<input type=\"hidden\" name=\"subject\" value=\"" + id + "\">";
 					html += "<input type=\"submit\" value=\"Create assignment\"></form>";
 				}
