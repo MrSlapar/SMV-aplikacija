@@ -22,7 +22,7 @@ $conn->query("
 
 $conn->query("
 	INSERT INTO Profesorji(ime, priimek, password) VALUES
-	('Volčanjšek', 'Slavica', ''),
+	('Slavica', 'Volčanjšek', ''),
 	('Klavdija', 'Špur Jereb', ''),
 	('Timej', 'Pirš', ''),
 	('Matic', 'Holobar', ''),

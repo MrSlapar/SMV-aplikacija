@@ -1,3 +1,6 @@
+body {
+	overflow-x: hidden;
+}
 .main {
 	background: linear-gradient(90deg, rgba(18,187,163,1) 45%, rgba(3,198,222,1) 100%);
 	padding: 15px;

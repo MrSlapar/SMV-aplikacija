@@ -1,3 +1,6 @@
+body {
+	overflow-x: hidden;
+}
 .mainOuter {
 	width: 100;
 	height: 80;
@@ -7,7 +10,6 @@
 	font-family: aquawax;
 	font-size: 15;
 	color: dimgray;
-	padding: 1%;
 }
 span.mainTitle{
 	font-size: 45;
@@ -17,4 +19,12 @@ span.title{
 }
 li>span.title{
 	font-size: 25;
+}
+select {
+	width: 80px;
+	font-family: aquawax;
+}
+input {
+	width: 150px;
+	font-family: aquawax;
 }
