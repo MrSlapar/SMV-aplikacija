@@ -91,7 +91,7 @@
 						if(isMe){
 							html += "<input type=\"hidden\" name=\"id\" value=\"" + Datoteke[i]["id"] + "\">"; 
 							html += "<input type=\"submit\" value=\"Delete file\"></form>";
-						}
+						}else html += "<br>";
 						html += "<span>Time of upload: " + Datoteke[i]["cas_objave"] + "</span><br>";
 						if(Datoteke[i]["id_assignmenta"] != 0) html += "<span>Intended for assignment: " + getDataFromRow(Naloge, Naloge.length, Datoteke[i]["id_assignmenta"], "naslov") + "</span><br><br>";
 						html += "</li><br>";
@@ -123,7 +123,7 @@
 				}
 				
 				// Izpis profesorjev
-				if($Profesorji !== false && $_SESSION["type"] == "professor"){
+				if($Profesorji !== false){
 					echo "<span id=\"notificationTitle\">PROFESSORS</span>";
 					for($i = 0; $i < $Profesorji->num_rows; $i++){
 						$row = $Profesorji->fetch_assoc();

@@ -17,6 +17,8 @@ $conn->query("USE Eucilnica");
 $path = $_POST["name"] . "/" . $_FILES["file"]["name"];
 $path2 = "../files/" . $path;
 
+mkdir("../files");
+mkdir("../files/" . $_POST["name"]);
 move_uploaded_file($_FILES["file"]["tmp_name"], $path2);
 
 $conn->query("
