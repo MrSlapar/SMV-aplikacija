@@ -23,7 +23,7 @@
 						EDIT SUBJECTS
 					</span>
 					<br>
-					<span class = "mainChange">
+					<span class = "mainChange"onclick = "location.href='adminAssignments.php'">
 						ADD/REMOVE PROFESSORS FROM SUBJECTS
 					</span>
 				</div>
