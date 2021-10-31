@@ -86,12 +86,13 @@
 				for(var i = 0; i < Datoteke.length; i++){
 					if(Datoteke[i]["id_uporabnika"] == id && Datoteke[i]["tip_uporabnika"] == type){
 						html += "<li>";
-						if(isMe) html += "<form action=\"deleteFile.php\" method=\"post\">";
-						html += "<span class='title'>" + Datoteke[i]["ime"] + "</span> &nbsp ";
+						html += "<form action=\"deleteFile.php\" method=\"post\">";
+						html += "<span class='title'>" + Datoteke[i]["ime"] + "</span> &nbsp";
 						if(isMe){
 							html += "<input type=\"hidden\" name=\"id\" value=\"" + Datoteke[i]["id"] + "\">"; 
-							html += "<input type=\"submit\" value=\"Delete file\"></form>";
-						}else html += "<br>";
+							html += "<input type=\"submit\" value=\"Delete file\">";
+						}
+						html += "<a href=\"" + "../files/" + Datoteke[i]["pot"] + "\" download=\"" + Datoteke[i]["pot"].split("/").at(-1) + "\"><input type=\"button\" value=\"Download file\"></a></form>";
 						html += "<span>Time of upload: " + Datoteke[i]["cas_objave"] + "</span><br>";
 						if(Datoteke[i]["id_assignmenta"] != 0) html += "<span>Intended for assignment: " + getDataFromRow(Naloge, Naloge.length, Datoteke[i]["id_assignmenta"], "naslov") + "</span><br><br>";
 						html += "</li><br>";
