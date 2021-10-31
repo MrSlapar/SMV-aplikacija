@@ -172,14 +172,4 @@ $conn->query("
 	('Sofija', 'Softlock', ''),
 	('Hana', 'Banana', '')
 ");
-
-$conn->query("
-	INSERT INTO Naloge(id_predmeta, id_profesorja, cas_objave, cas_za_oddajo, naslov, navodila) VALUES
-	(3, 1, NOW(), DATE_ADD(NOW(), INTERVAL 1 WEEK), 'First home reading', 'For this assignment, you must read atleast 17 books with 500 pages or more. Once you have completed your reading, you must put down everything in relation to the story, characters, environment, and genre of the books you\\'ve read.') 
-");
-
-$conn->query("
-	INSERT INTO Datoteke(ime, id_uporabnika, tip_uporabnika, cas_objave, pot, id_assignmenta) VALUES
-	('Example file', 21, 'professor', NOW(), 'Barack Obama/Example file.zip', 1)
-");
 ?>
