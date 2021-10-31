@@ -91,7 +91,7 @@
 		<div class = "notifications" style="overflow-x: hidden;">
 			<span id = "notificationTitle">SUBJECTS</span>
 			<?php
-				if($Predmeti !== false && $Predmeti !== null){
+				if($Predmeti !== false){
 					for($i = 0; $i < $Predmeti->num_rows; $i++){
 						$row = $Predmeti->fetch_assoc();
 						echo "<div onclick=writeSubjectData(" . $row["id"] . ")><span>" . $row["naslov"] . "</span></div>";
