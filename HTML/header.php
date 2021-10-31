@@ -25,14 +25,6 @@
 		</span>
 	</div>
 	<?php
-	if($_SESSION["type"] == "professor"){
-	echo
-	   "<div class = \"item\" id= \"assignmentsHeader\">
-			<span class = \"headerText\" onclick = \"location.href='assignments.php'\">
-				ASSIGNMENTS
-			</span>
-		</div>";
-	}
 	if($_SESSION["id"] == 21 && $_SESSION["type"] == "professor"){
 	echo
 	   "<div class = \"item\" id= \"adminHeader\">

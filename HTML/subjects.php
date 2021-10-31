@@ -49,15 +49,35 @@
 				return null;
 			}
 			
-			function writeSubjectData(i){			
-				var html = "<span class='mainTitle'>" + getDataFromRow(Predmeti, Predmeti.length, i, "naslov") + " (" + getDataFromRow(Predmeti, Predmeti.length, i, "kratica") + ")" + "</span>" + // Naslov predmeta in kratica
-						   "<br><span class='title'>Professors:</span><ul>";
+			function writeSubjectData(id){		
+				var html = "<span class='mainTitle'>" + getDataFromRow(Predmeti, Predmeti.length, id, "naslov") + " (" + getDataFromRow(Predmeti, Predmeti.length, id, "kratica") + ")" + "</span>";
+				
+				// Za urejanje nalog
+				var sId = <?php echo $_SESSION["id"] ?>;
+				var sType = <?php echo "'" . $_SESSION["type"] . "'" ?>;
+				
+				for(var i = 0; i < Profesor_Predmet.length; i++){
+					if(id == Profesor_Predmet[i]["id_predmeta"] && Profesor_Predmet[i]["id_profesorja"] == sId) var subjectIsAccessible = true;
+				}
+				if(sType != "professor") var subjectIsAccessible = false;
+				
+				if(subjectIsAccessible){
+					html += "<form action=\"addAssignment.php\" method=\"post\">"
+					html += "Assignment title: <input name=\"title\"><br>";
+					html += "Assignment instructions:<br><textarea rows=\"5\" cols=\"100\" name=\"instructions\"></textarea><br>";
+					html += "Date until assignment is due: <input type=\"date\" name=\"date\"><br>";
+					html += "Time until assignment is due: <input type=\"time\" name=\"time\"><br>";
+					html += "<input type=\"hidden\" name=\"subject\" value=\"" + id + "\">";
+					html += "<input type=\"submit\" value=\"Create assignment\">";
+				}
+				
+				html += "<br><span class='title'>Professors:</span><ul>";
 				
 				// Izpis profesorjev
 				var soProfesorji = false;
-				for(var j = 0; j < Profesor_Predmet.length; j++){
-					if(Profesor_Predmet[j]["id_predmeta"] == i){
-						html += "<li>" + getDataFromRow(Profesorji, Profesorji.length, Profesor_Predmet[j]["id_profesorja"], "ime") + " " + getDataFromRow(Profesorji, Profesorji.length, Profesor_Predmet[j]["id_profesorja"], "priimek") + "</li>"
+				for(var i = 0; i < Profesor_Predmet.length; i++){
+					if(Profesor_Predmet[i]["id_predmeta"] == id){
+						html += "<li>" + getDataFromRow(Profesorji, Profesorji.length, Profesor_Predmet[i]["id_profesorja"], "ime") + " " + getDataFromRow(Profesorji, Profesorji.length, Profesor_Predmet[i]["id_profesorja"], "priimek") + "</li>"
 						soProfesorji = true;
 					}
 				}
@@ -67,14 +87,14 @@
 				// Izpis nalog
 				var imaNaloge = false;
 				html += "<span class='title'>Assignments:</span><ul>";
-				for(var j = 0; j < Naloge.length; j++){
-					if(Naloge[j]["id_predmeta"] == i){
+				for(var i = 0; i < Naloge.length; i++){
+					if(Naloge[i]["id_predmeta"] == id){
 						html += "<li>";
-						html += "<span class='title'>" + Naloge[j]["naslov"] + "</span><br>";
-						html += "<span>Author: " + getDataFromRow(Profesorji, Profesorji.length, Naloge[j]["id_profesorja"], "ime") + " " + getDataFromRow(Profesorji, Profesorji.length, Naloge[j]["id_profesorja"], "priimek") + "</span><br><br>";
-						html += "<span>" + Naloge[j]["navodila"] + "</span><br><br>";
-						html += "<span>Time of creation: " + Naloge[j]["cas_objave"] + "</span><br>";
-						html += "<span>Time until assignment is due: " + Naloge[j]["cas_za_oddajo"] + "</span>";
+						html += "<span class='title'>" + Naloge[i]["naslov"] + "</span><br>";
+						html += "<span>Author: " + getDataFromRow(Profesorji, Profesorji.length, Naloge[i]["id_profesorja"], "ime") + " " + getDataFromRow(Profesorji, Profesorji.length, Naloge[i]["id_profesorja"], "priimek") + "</span><br><br>";
+						html += "<span>" + Naloge[i]["navodila"] + "</span><br><br>";
+						html += "<span>Time of creation: " + Naloge[i]["cas_objave"] + "</span><br>";
+						html += "<span>Time until assignment is due: " + Naloge[i]["cas_za_oddajo"] + "</span>";
 						html += "</li><br>";
 						imaNaloge = true;
 					}
@@ -100,7 +120,14 @@
 			?>
 		</div>
 		<div class="main">
-			<div class="subMain" style="overflow-x: hidden;"></div>
+			<div class="subMain" style="overflow-x: hidden;">
+				<?php
+					if(isset($_SESSION["subjectsMessage"])){
+						echo "<span class=\"title\">" . $_SESSION["subjectsMessage"] . "</span>";
+						unset($_SESSION["subjectsMessage"]);
+					}
+				?>
+			</div>
 		</div>
 	</body>
 </html>
