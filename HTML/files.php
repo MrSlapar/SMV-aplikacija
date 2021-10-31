@@ -50,15 +50,38 @@
 			}
 			
 			function writeFileData(id, type){
+				var sId = <?php echo $_SESSION["id"] ?>;
+				var sType = <?php echo "'" . $_SESSION["type"] . "'" ?>;
+				if(sId == id && sType == type) var isMe = true;
+				else var isMe = false;
+				
 				if(type == "professor") var studentsOrProfessors = Profesorji;
 				else if(type == "student") var studentsOrProfessors = Dijaki;
 				
 				var html = "<span class='mainTitle'>" +
 							getDataFromRow(studentsOrProfessors, studentsOrProfessors.length, id, "ime") + " " +
-							getDataFromRow(studentsOrProfessors, studentsOrProfessors.length, id, "priimek") + "</span>" +
-						   "<br><span class='title'>Files:</span><ul>";
+							getDataFromRow(studentsOrProfessors, studentsOrProfessors.length, id, "priimek") + "</span><br>";
+				
+				// Za objavljanje datotek
+				if(isMe){
+					html += "<form enctype=\"multipart/form-data\" action=\"uploadFile.php\" method=\"post\">";
+					html += "Select file: <input type=\"file\" name=\"file\"><br>";
+					html += "File name: <input name=\"filename\"><br>";
+					html += "Intended for assignment: <select name=\"assignment\">";
+					html += "<option>None</option>"
+					for(var i = 0; i < Naloge.length; i++){
+						html += "<option value=\"" + Naloge[i]["id"] + "\">";
+						html += Naloge[i]["naslov"];
+						html += "</option>";
+					}
+					html += "</select><br>";
+					if(sType == "professor") html += "<input type=\"hidden\" name=\"name\" value=\"" + getDataFromRow(Profesorji, Profesorji.length, sId, "ime") + " " + getDataFromRow(Profesorji, Profesorji.length, sId, "priimek") + "\" />";
+					else html += "<input type=\"hidden\" name=\"name\" value=\"" + getDataFromRow(Dijaki, Dijaki.length, sId, "ime") + " " + getDataFromRow(Dijaki, Dijaki.length, sId, "priimek") + "\" />";
+					html += "<input type=\"submit\" value=\"Upload file\"><br></form>";
+				}
 				
 				// Izpis datotek
+				html += "<span class='title'>Files:</span><ul>";
 				var imaDatoteke = false;
 				for(var i = 0; i < Datoteke.length; i++){
 					if(Datoteke[i]["id_uporabnika"] == id && Datoteke[i]["tip_uporabnika"] == type){
@@ -70,8 +93,8 @@
 						imaDatoteke = true;
 					}
 				}
-				if(!imaDatoteke) html += "This person has yet to upload any files."
-				html += "</ul>"
+				if(!imaDatoteke) html += isMe ? "You've yet to upload any files." : "This person has yet to upload any files.";
+				html += "</ul>";
 				
 				document.getElementsByClassName("subMain")[0].innerHTML = html;
 			}

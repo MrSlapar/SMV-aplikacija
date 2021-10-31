@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -16,8 +18,13 @@ if($_POST["name"] != "" && $_POST["surname"] != "" && $_POST["password"] != ""){
 		);"
 	);
 	
+	$_SESSION["id"] = $conn->insert_id;
+	$_SESSION["type"] = "student";
+	
 	header("Location: index.php");
+	exit();
 }else{
 	header("Location: signup.php");	
+	exit();
 }
 ?>
