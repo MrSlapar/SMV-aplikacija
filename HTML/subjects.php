@@ -52,7 +52,6 @@
 			function writeSubjectData(id){		
 				var html = "<span class='mainTitle'>" + getDataFromRow(Predmeti, Predmeti.length, id, "naslov") + " (" + getDataFromRow(Predmeti, Predmeti.length, id, "kratica") + ")" + "</span>";
 				
-				// Za urejanje nalog
 				var sId = <?php echo $_SESSION["id"] ?>;
 				var sType = <?php echo "'" . $_SESSION["type"] . "'" ?>;
 				
@@ -61,6 +60,7 @@
 				}
 				if(sType != "professor") var subjectIsAccessible = false;
 				
+				// Za dodajanje nalog
 				if(subjectIsAccessible){
 					html += "<form action=\"addAssignment.php\" method=\"post\">"
 					html += "Assignment title: <input name=\"title\"><br>";
@@ -68,7 +68,7 @@
 					html += "Date until assignment is due: <input type=\"date\" name=\"date\"><br>";
 					html += "Time until assignment is due: <input type=\"time\" name=\"time\"><br>";
 					html += "<input type=\"hidden\" name=\"subject\" value=\"" + id + "\">";
-					html += "<input type=\"submit\" value=\"Create assignment\">";
+					html += "<input type=\"submit\" value=\"Create assignment\"></form>";
 				}
 				
 				html += "<br><span class='title'>Professors:</span><ul>";
@@ -89,8 +89,15 @@
 				html += "<span class='title'>Assignments:</span><ul>";
 				for(var i = 0; i < Naloge.length; i++){
 					if(Naloge[i]["id_predmeta"] == id){
+						var isAssignmentAccessible = Naloge[i]["id_profesorja"] == sId && sType == "professor";
+						
+						if(isAssignmentAccessible) html += "<form action=\"deleteAssignment.php\" method=\"post\">";
 						html += "<li>";
-						html += "<span class='title'>" + Naloge[i]["naslov"] + "</span><br>";
+						html += "<span class='title'>" + Naloge[i]["naslov"] + "</span> &nbsp ";
+						if(isAssignmentAccessible){
+							html += "<input type=\"hidden\" value=\"" + Naloge[i]["id"] + "\" name=\"assignment\">";
+							html += "<input type=\"submit\" value=\"Delete assignment\"></form>";
+						}else html += "<br>";
 						html += "<span>Author: " + getDataFromRow(Profesorji, Profesorji.length, Naloge[i]["id_profesorja"], "ime") + " " + getDataFromRow(Profesorji, Profesorji.length, Naloge[i]["id_profesorja"], "priimek") + "</span><br><br>";
 						html += "<span>" + Naloge[i]["navodila"] + "</span><br><br>";
 						html += "<span>Time of creation: " + Naloge[i]["cas_objave"] + "</span><br>";
