@@ -31,7 +31,7 @@ td>input{
 	font-weight: bold;
 	font-family: aquawax;
 	padding: 1%;
-	margin-top: 5%;
+	margin-top: 2%;
 	background-color: rgba(0, 0, 0, 0);
 	border: none;
 }
@@ -49,4 +49,13 @@ td>input{
 .aquawax-hover:hover{
 	opacity: 1;
 	cursor: pointer;
+}
+#failed {
+	font-family: aquawax;
+	color: #000000;
+	margin-left: 0.5%;
+	margin-top: 0.5%;
+}
+.invisible {
+	visibility: hidden;
 }

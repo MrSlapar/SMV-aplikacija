@@ -6,6 +6,9 @@
 	<body>
 		<?php include "headerNotLogged.php"?>
 		<div id = "login">
+			<span id = "failed" class = "invisible">
+			NOT VISIBLE
+			</span>
 			<form action="login-check.php" method="post">
 				<table>
 					<tr>

@@ -6,6 +6,9 @@
 	<body>
 		<?php include "headerNotLogged.php"?>
 		<div id = "login">
+			<span id = "failed">
+				sign up failed
+			</span>
 			<form action="signup-check.php" method="post">
 				<table>
 					<tr>
