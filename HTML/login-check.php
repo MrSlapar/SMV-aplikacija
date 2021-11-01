@@ -30,6 +30,7 @@ if($result !== false && $result->num_rows > 0){
 	}
 }
 
+$_SESSION["loginMessage"] = "The information you've entered is incorrect.";
 header("Location: login.php");
 exit();
 ?>

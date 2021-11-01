@@ -6,8 +6,16 @@
 	<body>
 		<?php include "headerNotLogged.php"?>
 		<div id = "login">
-			<span id = "failed" class = "invisible">
-			NOT VISIBLE
+			<span id = "failed">
+			<?php
+				session_start();
+				if(isset($_SESSION["loginMessage"])){
+					echo $_SESSION["loginMessage"];
+					unset($_SESSION["loginMessage"]);
+				}else{
+					echo "<br>";
+				}
+			?>
 			</span>
 			<form action="login-check.php" method="post">
 				<table>

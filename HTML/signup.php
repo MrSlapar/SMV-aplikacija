@@ -7,7 +7,15 @@
 		<?php include "headerNotLogged.php"?>
 		<div id = "login">
 			<span id = "failed">
-				sign up failed
+			<?php
+				session_start();
+				if(isset($_SESSION["signupMessage"])){
+					echo $_SESSION["signupMessage"];
+					unset($_SESSION["signupMessage"]);
+				}else{
+					echo "<br>";
+				}
+			?>
 			</span>
 			<form action="signup-check.php" method="post">
 				<table>
