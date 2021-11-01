@@ -113,7 +113,7 @@
 		<div class = "notifications" style="overflow-x: hidden;">
 			<span id = "notificationTitle">FILES</span>
 			<?php echo "<div onclick=\"writeFileData(" . $_SESSION["id"] . ", '" . $_SESSION["type"] . "')\"><span>My files</span></div>"; ?>
-			<span id = "notificationTitle">STUDENTS</span>
+			<span id = "notificationTitle" onclick = "location.href='students.php'">STUDENTS</span>
 			<?php
 				// Izpis dijakov
 				if($Dijaki !== false){
@@ -127,7 +127,7 @@
 				
 				// Izpis profesorjev
 				if($Profesorji !== false){
-					echo "<span id=\"notificationTitle\">PROFESSORS</span>";
+					echo "<span id=\"notificationTitle\" onclick = \"location.href='professors.php'\">PROFESSORS</span>";
 					for($i = 0; $i < $Profesorji->num_rows; $i++){
 						$row = $Profesorji->fetch_assoc();
 						if($row["id"] != $_SESSION["id"]){
