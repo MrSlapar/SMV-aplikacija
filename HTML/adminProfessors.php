@@ -23,7 +23,7 @@
 						<label for = "id">Professor:<br></label>
 						<select name="userID">
 						<?php
-							$result = $conn->query("SELECT * FROM Profesorji ORDER BY ime, priimek");
+							$result = $conn->query("SELECT * FROM Profesorji WHERE id != 21 ORDER BY ime, priimek");
 							if($result !== false){
 								for($i = 0; $i < $result->num_rows; $i++){
 									$row = $result->fetch_assoc();
