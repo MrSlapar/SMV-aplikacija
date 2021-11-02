@@ -58,7 +58,7 @@
 				if(type == "professor") var studentsOrProfessors = Profesorji;
 				else if(type == "student") var studentsOrProfessors = Dijaki;
 				
-				var html = "<center><span class='mainTitle'>" +
+				var html = "<span class='mainTitle'>" +
 							getDataFromRow(studentsOrProfessors, studentsOrProfessors.length, id, "ime") + " " +
 							getDataFromRow(studentsOrProfessors, studentsOrProfessors.length, id, "priimek") + "</span><br>";
 				
@@ -79,7 +79,6 @@
 					if(sType == "professor") html += "<input type=\"hidden\" name=\"name\" value=\"" + getDataFromRow(Profesorji, Profesorji.length, sId, "ime") + " " + getDataFromRow(Profesorji, Profesorji.length, sId, "priimek") + "\" />";
 					else html += "<input type=\"hidden\" name=\"name\" value=\"" + getDataFromRow(Dijaki, Dijaki.length, sId, "ime") + " " + getDataFromRow(Dijaki, Dijaki.length, sId, "priimek") + "\" />";
 					html += "<input type=\"submit\" value=\"Upload file\"><br><br><hr><br></form>";
-					html += "</center>";
 				}
 				
 				// Izpis datotek

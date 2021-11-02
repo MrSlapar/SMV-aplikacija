@@ -50,7 +50,7 @@
 			}
 			
 			function writeSubjectData(id){		
-				var html = "<center><span class='mainTitle'>" + getDataFromRow(Predmeti, Predmeti.length, id, "naslov") + " (" + getDataFromRow(Predmeti, Predmeti.length, id, "kratica") + ")" + "</span>";
+				var html = "<span class='mainTitle'>" + getDataFromRow(Predmeti, Predmeti.length, id, "naslov") + " (" + getDataFromRow(Predmeti, Predmeti.length, id, "kratica") + ")" + "</span>";
 				
 				var sId = <?php echo $_SESSION["id"] ?>;
 				var sType = <?php echo "'" . $_SESSION["type"] . "'" ?>;
@@ -102,7 +102,7 @@
 						html += "<span>" + Naloge[i]["navodila"] + "</span><br><br>";
 						html += "<span>Time of creation: " + Naloge[i]["cas_objave"] + "</span><br>";
 						html += "<span>Time until assignment is due: " + Naloge[i]["cas_za_oddajo"] + "</span>";
-						html += "</li><br></center>";
+						html += "</li><br>";
 						imaNaloge = true;
 					}
 				}
